@@ -35,5 +35,24 @@ namespace SalesWebMvc.Services
             _context.Add(seller);
             _context.SaveChanges();
         }
+        public void Update(Seller obj)
+        {
+            if (_context.Seller.Any(x => x.Id == obj.Id))
+            {
+                try
+                {
+                    _context.Update(obj);
+                    _context.SaveChanges();
+                }
+                catch (DbUpdateConcurrencyException e)
+                {
+                    throw new Services.Exceptions.DbConcurrencyException(e.Message);
+                }
+            }
+            else
+            {
+                throw new Services.Exceptions.NotFoundException("Id not found");
+            }
+        }
     }
 }
