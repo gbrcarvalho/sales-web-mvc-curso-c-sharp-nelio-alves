@@ -14,5 +14,12 @@ namespace SalesWebMvc.Services
         {
             return _context.Seller.ToList();
         }
+
+        public void Insert(Seller seller)
+        {
+            seller.Department = new Department(5, "Food");
+            _context.Add(seller);
+            _context.SaveChanges();
+        }
     }
 }
