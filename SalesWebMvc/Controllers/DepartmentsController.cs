@@ -21,7 +21,8 @@ namespace SalesWebMvc.Controllers
         // GET: Departments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Department.ToListAsync());
+            var departments = await _context.Department.ToListAsync();
+            return View(departments);
         }
 
         // GET: Departments/Details/5

@@ -1,9 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration; 
 using Microsoft.Extensions.DependencyInjection;
 using SalesWebMvc.Models;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
+
+
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddDbContext<SalesWebMvcContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("SalesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcContext' not found.")));
+var connectionString = builder.Configuration.GetConnectionString("SalesWebMvcContext") ?? throw new InvalidOperationException("Connection string 'SalesWebMvcContext' not found.");
+
+builder.Services.AddDbContext<SalesWebMvcContext>(
+    options => options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString),
+    builder => builder.MigrationsAssembly("SalesWebMvc")
+ ));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
