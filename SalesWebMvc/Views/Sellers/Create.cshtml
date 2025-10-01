@@ -13,35 +13,39 @@
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="input-group-sm">
-                <label asp-for="Seller.Name" class="form-label"></label>
-                <input asp-for="Seller.Name" class="form-control" />
+            <div class="mt-2 mb-2">
+                <label asp-for="Seller.Name" class="form-label mt-1 mb-1"></label>
+                <input asp-for="Seller.Name" class="form-control mt-1 mb-1" />
                 <span asp-validation-for="Seller.Name" class="text-danger"></span>
             </div>
-            <div class="input-group-sm">
-                <label asp-for="Seller.Email" class="form-label"></label>
-                <input asp-for="Seller.Email" class="form-control" />
+            <div class="mt-2 mb-2">
+                <label asp-for="Seller.Email" class="form-label mt-1 mb-1"></label>
+                <input asp-for="Seller.Email" class="form-control mt-1 mb-1" />
                 <span asp-validation-for="Seller.Email" class="text-danger"></span>
             </div>
-            <div class="input-group-sm">
-                <label asp-for="Seller.BirthDate" class="form-label"></label>
-                <input asp-for="Seller.BirthDate" class="form-control" />
+            <div class="mt-2 mb-2">
+                <label asp-for="Seller.BirthDate" class="form-label mt-1 mb-1"></label>
+                <input asp-for="Seller.BirthDate" class="form-control mt-1 mb-1" />
                 <span asp-validation-for="Seller.BirthDate" class="text-danger"></span>
             </div>
-            <div class="input-group-sm">
-                <label asp-for="Seller.BaseSalary" class="form-label"></label>
-                <input asp-for="Seller.BaseSalary" class="form-control" />
+            <div class="mt-2 mb-2">
+                <label asp-for="Seller.BaseSalary" class="form-label mt-1 mb-1"></label>
+                <input asp-for="Seller.BaseSalary" class="form-control mt-1 mb-1" />
                 <span asp-validation-for="Seller.BaseSalary" class="text-danger"></span>
             </div>
-            <div class="input-group-sm">
-                <label asp-for="Seller.DepartmentId" class="form-label"></label>
-                <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments,"Id","Name"))" class="form-select"></select>
+            <div class="mt-2 mb-2">
+                <label asp-for="Seller.DepartmentId" class="form-label mt-1 mb-1"></label>
+                <select asp-for="Seller.DepartmentId" asp-items="@(new SelectList(Model.Departments, "Id", "Name"))" class="form-select mt-1 mb-1"></select>
             </div>
-            <div class="btn-group">
+            <div class="btn-group mt-2 mb-2">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
